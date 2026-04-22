@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RP Traders — AI Software Services</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; color: #333; }
+nav { background: #0057b8; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+nav .logo { color: white; font-size: 22px; font-weight: bold; }
+nav ul { list-style: none; display: flex; gap: 30px; }
+nav ul li a { color: white; text-decoration: none; font-size: 15px; }
+nav ul li a:hover { color: #ffd700; }
+.hero { background: linear-gradient(135deg, #0057b8, #003d82); color: white; padding: 80px 40px; text-align: center; }
+.hero h1 { font-size: 48px; margin-bottom: 20px; }
+.hero p { font-size: 20px; max-width: 700px; margin: 0 auto 30px; opacity: 0.9; }
+.hero .tagline { font-size: 16px; opacity: 0.8; margin-bottom: 40px; }
+.btn { background: #ffd700; color: #003d82; padding: 14px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-block; margin: 8px; }
+.btn-outline { background: transparent; color: white; border: 2px solid white; padding: 12px 35px; border-radius: 30px; text-decoration: none; font-size: 16px; display: inline-block; margin: 8px; }
+.stats { background: #f8f9fa; padding: 40px; display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+.stat { text-align: center; }
+.stat .num { font-size: 36px; font-weight: bold; color: #0057b8; }
+.stat .lbl { font-size: 14px; color: #666; margin-top: 5px; }
+section { padding: 70px 40px; }
+section h2 { font-size: 36px; text-align: center; margin-bottom: 12px; color: #0057b8; }
+section .subtitle { text-align: center; color: #666; font-size: 16px; margin-bottom: 50px; }
+.products { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+.product-card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 4px solid #0057b8; transition: transform 0.2s; }
+.product-card:hover { transform: translateY(-5px); }
+.product-card .icon { font-size: 40px; margin-bottom: 15px; }
+.product-card h3 { font-size: 20px; margin-bottom: 10px; color: #0057b8; }
+.product-card p { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 15px; }
+.product-card .price { font-size: 18px; font-weight: bold; color: #0057b8; margin-bottom: 15px; }
+.product-card .features { list-style: none; margin-bottom: 20px; }
+.product-card .features li { font-size: 13px; color: #444; padding: 4px 0; }
+.product-card .features li:before { content: "✓ "; color: #28a745; font-weight: bold; }
+.product-card a { background: #0057b8; color: white; padding: 10px 25px; border-radius: 20px; text-decoration: none; font-size: 14px; display: inline-block; }
+.about { background: #f8f9fa; }
+.about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1000px; margin: 0 auto; align-items: center; }
+.about-text h3 { font-size: 24px; color: #0057b8; margin-bottom: 15px; }
+.about-text p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 15px; }
+.about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.badge { background: #0057b8; color: white; padding: 8px 18px; border-radius: 20px; font-size: 13px; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.about-stat { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.about-stat .n { font-size: 28px; font-weight: bold; color: #0057b8; }
+.about-stat .l { font-size: 13px; color: #666; margin-top: 5px; }
+.pricing { background: white; }
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
+.price-card { border: 2px solid #e0e0e0; border-radius: 12px; padding: 30px; text-align: center; transition: border-color 0.2s; }
+.price-card:hover { border-color: #0057b8; }
+.price-card.featured { border-color: #0057b8; background: #f0f7ff; }
+.price-card .product-name { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.price-card .amount { font-size: 36px; font-weight: bold; color: #0057b8; }
+.price-card .period { font-size: 14px; color: #888; margin-bottom: 20px; }
+.price-card .free-tag { background: #28a745; color: white; padding: 3px 12px; border-radius: 10px; font-size: 12px; }
+.price-card ul { list-style: none; text-align: left; margin-bottom: 25px; }
+.price-card ul li { font-size: 13px; color: #444; padding: 5px 0; border-bottom: 1px solid #f0f0f0; }
+.price-card ul li:before { content: "✓ "; color: #28a745; }
+.price-card a { background: #0057b8; color: white; padding: 10px 30px; border-radius: 20px; text-decoration: none; font-size: 14px; display: inline-block; }
+.contact { background: #0057b8; color: white; text-align: center; }
+.contact h2 { color: white; margin-bottom: 12px; }
+.contact .subtitle { color: #cce4ff; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 800px; margin: 40px auto; }
+.contact-item h4 { font-size: 16px; margin-bottom: 8px; color: #ffd700; }
+.contact-item p { font-size: 14px; color: #cce4ff; line-height: 1.6; }
+footer { background: #003d82; color: #cce4ff; text-align: center; padding: 25px; font-size: 13px; }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 32px; }
+  nav ul { display: none; }
+  .about-content { grid-template-columns: 1fr; }
+  .stats { gap: 30px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">RP Traders</div>
+  <ul>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1>AI-Powered Software Services</h1>
+  <p>Helping millions of Indians and Indian diaspora with AI bots for jobs, education, government schemes and immigration</p>
+  <div class="tagline">Serving India and USA | Telugu + English | Available 24/7</div>
+  <a href="#products" class="btn">Explore Our Products</a>
+  <a href="#contact" class="btn-outline">Contact Us</a>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="num">4</div><div class="lbl">AI Products Live</div></div>
+  <div class="stat"><div class="num">1000+</div><div class="lbl">Active Users</div></div>
+  <div class="stat"><div class="num">24/7</div><div class="lbl">Always Available</div></div>
+  <div class="stat"><div class="num">2</div><div class="lbl">Countries Served</div></div>
+</div>
+
+<section id="products">
+  <h2>Our Products</h2>
+  <p class="subtitle">AI-powered bots solving real problems for real people</p>
+  <div class="products">
+
+    <div class="product-card">
+      <div class="icon">🤖</div>
+      <h3>DoubtGuruAI</h3>
+      <p>AI-powered doubt solver for Indian students. Send a photo of any textbook question and get step-by-step explanation in Telugu or English instantly.</p>
+      <div class="price">Free — Rs.199/month</div>
+      <ul class="features">
+        <li>Photo-based question solving</li>
+        <li>Telugu and English support</li>
+        <li>EAMCET, JEE, NEET, Intermediate</li>
+        <li>Available 24/7 on Telegram</li>
+        <li>5 free questions daily</li>
+      </ul>
+      <a href="https://t.me/DoubtGuruAI_bot" target="_blank">Try Free on Telegram</a>
+    </div>
+
+    <div class="product-card">
+      <div class="icon">💼</div>
+      <h3>JobGuruAI</h3>
+      <p>Daily job alert bot for Indian job seekers. Register once and receive 10 matching jobs every morning at 6 AM IST directly on Telegram.</p>
+      <div class="price">Free Trial — Rs.199/month</div>
+      <ul class="features">
+        <li>10 matching jobs daily at 6 AM</li>
+        <li>100+ software job titles</li>
+        <li>India and International jobs</li>
+        <li>Direct company portal links</li>
+        <li>Referral rewards system</li>
+      </ul>
+      <a href="https://t.me/JobGuruAI_bot" target="_blank">Try Free on Telegram</a>
+    </div>
+
+    <div class="product-card">
+      <div class="icon">🏛️</div>
+      <h3>SchemeGuruAI</h3>
+      <p>India's first AI government scheme finder. Answer 10 questions and instantly discover all central and state government schemes you are eligible for.</p>
+      <div class="price">Free — Rs.99/month</div>
+      <ul class="features">
+        <li>1000+ Central and State schemes</li>
+        <li>PM Kisan, Ayushman, PM Awas</li>
+        <li>Scholarships, Pensions, Loans</li>
+        <li>Telugu and English support</li>
+        <li>Daily scheme alerts</li>
+      </ul>
+      <a href="https://t.me/SchemeGuruAI_bot" target="_blank">Try Free on Telegram</a>
+    </div>
+
+    <div class="product-card">
+      <div class="icon">🇺🇸</div>
+      <h3>VisaGuruAI</h3>
+      <p>24/7 H1B and US immigration assistant on WhatsApp for Indian tech workers in USA. Get instant expert answers on H1B, Green Card, OPT and more.</p>
+      <div class="price">Free — $29/month</div>
+      <ul class="features">
+        <li>H1B transfer and extension guide</li>
+        <li>Layoff 60-day emergency mode</li>
+        <li>Green Card priority date alerts</li>
+        <li>Job search with H1B sponsorship</li>
+        <li>Telugu and English support</li>
+      </ul>
+      <a href="https://wa.me/14155238886?text=join%20bee-group" target="_blank">Try Free on WhatsApp</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="pricing" class="pricing">
+  <h2>Pricing Plans</h2>
+  <p class="subtitle">Affordable plans for every budget</p>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <div class="product-name">DoubtGuruAI</div>
+      <div class="amount">Free</div>
+      <div class="period"><span class="free-tag">5 questions/day</span></div>
+      <ul>
+        <li>Photo question solving</li>
+        <li>Telugu and English</li>
+        <li>All subjects</li>
+      </ul>
+      <a href="https://t.me/DoubtGuruAI_bot">Start Free</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="product-name">DoubtGuruAI Premium</div>
+      <div class="amount">Rs.199</div>
+      <div class="period">/month</div>
+      <ul>
+        <li>Unlimited questions daily</li>
+        <li>All subjects covered</li>
+        <li>Priority support</li>
+        <li>Exam tips and tricks</li>
+      </ul>
+      <a href="https://t.me/DoubtGuruAI_bot">Subscribe Now</a>
+    </div>
+
+    <div class="price-card">
+      <div class="product-name">JobGuruAI</div>
+      <div class="amount">Rs.199</div>
+      <div class="period">/month</div>
+      <ul>
+        <li>10 matching jobs daily</li>
+        <li>All India and Remote</li>
+        <li>Direct company portals</li>
+        <li>Referral rewards</li>
+      </ul>
+      <a href="https://t.me/JobGuruAI_bot">Subscribe Now</a>
+    </div>
+
+    <div class="price-card">
+      <div class="product-name">SchemeGuruAI</div>
+      <div class="amount">Rs.99</div>
+      <div class="period">/month</div>
+      <ul>
+        <li>All matching schemes</li>
+        <li>Application guides</li>
+        <li>Document checklists</li>
+        <li>Deadline alerts</li>
+      </ul>
+      <a href="https://t.me/SchemeGuruAI_bot">Subscribe Now</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="product-name">VisaGuruAI Power Plan</div>
+      <div class="amount">$29</div>
+      <div class="period">/month (USD)</div>
+      <ul>
+        <li>Unlimited H1B questions</li>
+        <li>Priority date alerts</li>
+        <li>Layoff emergency guide</li>
+        <li>Job search assistance</li>
+        <li>Document checklists</li>
+        <li>Telugu and English</li>
+      </ul>
+      <a href="https://wa.me/14155238886?text=join%20bee-group">Subscribe Now</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <p class="subtitle">Building AI solutions for India and the Indian diaspora</p>
+  <div class="about-content">
+    <div class="about-text">
+      <h3>Who We Are</h3>
+      <p>RP Traders is a registered technology company based in Hyderabad, India. We build AI-powered software products that solve real problems for millions of Indians and Indian professionals abroad.</p>
+      <p>Founded by Lakshmi Narayana Eluri, an AI Engineer and UiPath Developer, we specialize in conversational AI bots delivered through Telegram and WhatsApp — the platforms used daily by our customers.</p>
+      <p>Our mission is to make AI accessible to every Indian — whether they are a farmer in Telangana looking for government schemes, a student in Hyderabad preparing for EAMCET, a job seeker in Bangalore, or an H1B worker in the USA worried about immigration.</p>
+      <div class="about-badges">
+        <span class="badge">GST Registered</span>
+        <span class="badge">MSME Certified</span>
+        <span class="badge">Hyderabad, India</span>
+        <span class="badge">Est. 2024</span>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="about-stat"><div class="n">4</div><div class="l">AI Products</div></div>
+      <div class="about-stat"><div class="n">2</div><div class="l">Countries</div></div>
+      <div class="about-stat"><div class="n">1000+</div><div class="l">Users Served</div></div>
+      <div class="about-stat"><div class="n">24/7</div><div class="l">Availability</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p class="subtitle">We are here to help — reach out anytime!</p>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <h4>Email</h4>
+      <p>rptraders1129@gmail.com</p>
+    </div>
+    <div class="contact-item">
+      <h4>Phone</h4>
+      <p>+91 9491085798</p>
+    </div>
+    <div class="contact-item">
+      <h4>Location</h4>
+      <p>Hyderabad, Telangana<br>India — 500079</p>
+    </div>
+    <div class="contact-item">
+      <h4>Business Hours</h4>
+      <p>Monday to Saturday<br>9 AM to 6 PM IST<br>Bots available 24/7</p>
+    </div>
+  </div>
+  <a href="mailto:rptraders1129@gmail.com" class="btn">Send us an Email</a>
+</section>
+
+<footer>
+  <p>© 2024 RP Traders. All rights reserved. | GST Registered | MSME Certified | Hyderabad, India</p>
+  <p style="margin-top:8px">DoubtGuruAI | JobGuruAI | SchemeGuruAI | VisaGuruAI</p>
+</footer>
+
+</body>
+</html>
